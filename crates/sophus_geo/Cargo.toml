@@ -1,0 +1,25 @@
+[package]
+description = "geometric primitives: rays, hyper-planes, hyper-spheres, axis-aligned bounding boxes"
+name = "sophus_geo"
+readme = "README.md"
+
+edition.workspace = true
+include.workspace = true
+keywords.workspace = true
+license.workspace = true
+repository.workspace = true
+version.workspace = true
+
+[dependencies]
+sophus_autodiff.workspace = true
+sophus_lie.workspace = true
+
+approx.workspace = true
+
+[build-dependencies]
+rustc_version.workspace = true
+
+[features]
+simd = ["sophus_lie/simd"]
+std = ["sophus_autodiff/std", "sophus_lie/std"]
+default = ["std"]

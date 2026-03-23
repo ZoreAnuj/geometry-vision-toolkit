@@ -1,0 +1,31 @@
+[package]
+description = "static and dynamic image types"
+name = "sophus_image"
+readme = "README.md"
+
+edition.workspace = true
+include.workspace = true
+keywords.workspace = true
+license.workspace = true
+repository.workspace = true
+version.workspace = true
+
+[dependencies]
+sophus_autodiff.workspace = true
+sophus_tensor.workspace = true
+
+approx.workspace = true
+bytemuck.workspace = true
+nalgebra.workspace = true
+ndarray.workspace = true
+num-traits.workspace = true
+png = {version = "0.17", optional = true}
+tiff = {version = "0.10.0", optional = true}
+
+[build-dependencies]
+rustc_version.workspace = true
+
+[features]
+default = ["std"]
+simd = ["sophus_tensor/simd"]
+std = ["png", "tiff", "sophus_autodiff/std", "sophus_tensor/std"]

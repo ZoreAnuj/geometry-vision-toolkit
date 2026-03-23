@@ -1,0 +1,47 @@
+[package]
+description = "Block-sparse structures and algorithms"
+name = "sophus_solver"
+readme = "README.md"
+
+edition.workspace = true
+include.workspace = true
+keywords.workspace = true
+license.workspace = true
+repository.workspace = true
+version.workspace = true
+
+[dependencies]
+sophus_autodiff.workspace = true
+
+approx.workspace = true
+enum-as-inner.workspace = true
+faer.workspace = true
+log.workspace = true
+nalgebra.workspace = true
+nonmax.workspace = true
+rand.workspace = true
+rand_chacha.workspace = true
+rayon.workspace = true
+snafu.workspace = true
+puffin.workspace = true
+
+
+# native:
+[target.'cfg(not(target_arch = "wasm32"))'.dependencies]
+rayon.workspace = true
+
+[build-dependencies]
+rustc_version.workspace = true
+
+[[bin]]
+bench = true
+name = "solver_bench"
+
+[features]
+default = ["std"]
+simd = [
+  "sophus_autodiff/simd",
+]
+std = [
+  "sophus_autodiff/std",
+]

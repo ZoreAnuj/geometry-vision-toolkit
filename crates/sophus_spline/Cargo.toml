@@ -1,0 +1,28 @@
+[package]
+description = "Spline interpolation"
+name = "sophus_spline"
+readme = "README.md"
+
+edition.workspace = true
+include.workspace = true
+keywords.workspace = true
+license.workspace = true
+repository.workspace = true
+version.workspace = true
+
+[dependencies]
+sophus_autodiff.workspace = true
+
+approx.workspace = true
+log.workspace = true
+num-traits.workspace = true
+
+[build-dependencies]
+rustc_version.workspace = true
+
+[features]
+simd = ["sophus_autodiff/simd"]
+std = [
+  "sophus_autodiff/std",
+]
+default = ["std"]
